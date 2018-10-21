@@ -48,7 +48,7 @@ function setup() {
 
 function init() {
     for(let i = 0; i < numVehicles; i++)
-        vehicles.push(new Vehicle);
+        vehicles.push(new Vehicle(i));
     frameCount = 0;
     setInterval (function() {
         console.log(frameCount /3 + " FPS");
