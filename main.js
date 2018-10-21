@@ -7,6 +7,7 @@ var scene;
 var textures = [];
 var camera;
 var vehicles = [];
+var numVehicles = 100;
 var frameCount;
 
 // a virtual box within which the vehicles will be contained
@@ -46,7 +47,8 @@ function setup() {
     }
 
 function init() {
-    vehicles.push(new Vehicle);
+    for(let i = 0; i < numVehicles; i++)
+        vehicles.push(new Vehicle);
     frameCount = 0;
     setInterval (function() {
         console.log(frameCount /3 + " FPS");
