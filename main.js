@@ -32,7 +32,7 @@ function setup() {
 
     // Add a camera to the scene and attach it to the canvas
     // var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 2, new BABYLON.Vector3(0,0,5), scene);
-    camera = new BABYLON.UniversalCamera("UniCamera", new BABYLON.Vector3(0, 0, -35), scene);
+    camera = new BABYLON.UniversalCamera("UniCamera", new BABYLON.Vector3(0, 0, -30), scene);
     camera.attachControl(canvas, true);
 
     // Add lights to the scene
@@ -47,11 +47,12 @@ function setup() {
     }
 
 function init() {
+    Vehicle.createMaterials(scene);
     for(let i = 0; i < numVehicles; i++)
         vehicles.push(new Vehicle(i));
     frameCount = 0;
     setInterval (function() {
-        console.log(frameCount /3 + " FPS");
+        //console.log(frameCount /3 + " FPS");
         frameCount = 0;
     }, 3000);
 

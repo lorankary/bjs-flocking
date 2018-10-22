@@ -2,6 +2,8 @@
 // Vehicle is a cylinder shaped like a cone
 function Vehicle(i) {
     this.mesh = BABYLON.MeshBuilder.CreateCylinder("vehicle"+i, { height: 1, diameterTop: 0, diameterBottom: 0.5 }, scene);
+    this.mesh.material = Vehicle.materials[i%6];
+
     this.mesh.rotation.x = -Math.PI / 2;
     this.mesh.bakeCurrentTransformIntoVertices();
 
@@ -27,6 +29,22 @@ Vehicle.coh_factor = 0.1;
 Vehicle.align_factor = 0.1;
 Vehicle.maxSpeed = 0.1;             // limits for speed and acceleration
 Vehicle.maxAcc = 0.01;
+Vehicle.createMaterials = function(scene) {
+    let redmat = new BABYLON.StandardMaterial("red", scene);
+    redmat.diffuseColor = new BABYLON.Color3(1,.5,.5);  // red
+    let yellowmat = new BABYLON.StandardMaterial("yellow", scene);
+    yellowmat.diffuseColor = new BABYLON.Color3(1,1,.5);  // yellow
+    let greenmat = new BABYLON.StandardMaterial("green", scene);
+    greenmat.diffuseColor = new BABYLON.Color3(.5,1,.5);  // green
+    let cyanmat = new BABYLON.StandardMaterial("cyan", scene);
+    cyanmat.diffuseColor = new BABYLON.Color3(.5,1,1);  // cyan
+    let bluemat = new BABYLON.StandardMaterial("blue", scene);
+    bluemat.diffuseColor = new BABYLON.Color3(.5,.5,1);  // blue
+    let magentamat = new BABYLON.StandardMaterial("magenta", scene);
+    magentamat.diffuseColor = new BABYLON.Color3(1,.5,1);  // magenta
+    Vehicle.materials = [redmat,yellowmat,greenmat,cyanmat,bluemat,magentamat];
+}
+
 
 // update each vehicle's velocity, location, and rotation
 Vehicle.prototype.update = function() {
