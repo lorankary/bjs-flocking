@@ -12,7 +12,7 @@ var frameCount;
 
 // a virtual box within which the vehicles will be contained
 // centered around 0,0,0
-var world = {   // bounds within which the planets should stay
+var world = {   // bounds within which the vehicles should stay
     right: 16,
     top: 12,
     back: 8
@@ -37,26 +37,22 @@ function setup() {
 
     // Add lights to the scene
     var light1 = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 1, 0), scene);
-    // var light2 = new BABYLON.PointLight("light2", new BABYLON.Vector3(0, 1, -1), scene);
 
-    // var gravityVector = new BABYLON.Vector3(0, 0, 0);
-    // var physicsPlugin = new BABYLON.OimoJSPlugin();
-    // scene.enablePhysics(gravityVector, physicsPlugin);
-    // scene.enablePhysics();
     init();
     }
-
+// Create the flocking vehicles and start the animation
 function init() {
     Vehicle.createMaterials(scene);
+    // Create all the vehicles
     for(let i = 0; i < numVehicles; i++)
         vehicles.push(new Vehicle(i));
+    // measure performance
     frameCount = 0;
     setInterval (function() {
         //console.log(frameCount /3 + " FPS");
         frameCount = 0;
     }, 3000);
 
-    // Create all the Planets
     engine.runRenderLoop(function () {
         animate();
     });
