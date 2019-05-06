@@ -1,5 +1,8 @@
 window.onload = setup;
 
+// Flocking in three dimensions based on Daniel Shiffman's
+// book The Nature of Code
+
 // globals
 var canvas; // the canvas element
 var engine; // the BABYLON 3D engine
